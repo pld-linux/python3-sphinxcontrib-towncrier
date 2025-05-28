@@ -7,7 +7,7 @@ Summary:	An RST directive for injecting a Towncrier-generated changelog draft co
 Summary(pl.UTF-8):	Dyrektywa RST do wstawiania szablonu logu zmian z Towncriera, zawierającego fragmenty dla kolejnej wersji projektu
 Name:		python3-sphinxcontrib-towncrier
 Version:	0.5.0a0
-Release:	1
+Release:	2
 License:	BSD
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/sphinxcontrib-towncrier/
@@ -66,11 +66,12 @@ Dokumentacja API modułu Pythona sphinxcontrib.towncrier.
 %if %{with tests}
 PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 \
 PYTEST_PLUGINS="xdist.plugin" \
-PYTHONPATH=$(pwd) \
+PYTHONPATH=$(pwd)/src \
 %{__python3} -m pytest tests
 %endif
 
 %if %{with doc}
+PYTHONPATH=$(pwd)/src \
 sphinx-build-3 docs docs/_build/html
 %endif
 
